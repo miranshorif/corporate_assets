@@ -1,0 +1,51 @@
+<!-- asset_list.html -->
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Corporate Assets - Asset List</title>
+</head>
+<body>
+    <h1>Corporate Assets - Asset List</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Asset Type</th>
+                <th>Serial Number</th>
+                <th>Assigned To</th>
+                <th>Assigned Date</th>
+                <th>Return Date</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for asset in devices %}
+            <tr>
+                <td>{{ asset.asset_type }}</td>
+                <td>{{ asset.serial_number }}</td>
+                <td>
+                    {% if asset.assigned_to %}
+                        {{ asset.assigned_to.name }}
+                    {% else %}
+                        Not Assigned
+                    {% endif %}
+                </td>
+                <td>
+                    {% if asset.assigned_date %}
+                        {{ asset.assigned_date|date:"Y-m-d" }}
+                    {% else %}
+                        N/A
+                    {% endif %}
+                </td>
+                <td>
+                    {% if asset.return_date %}
+                        {{ asset.return_date|date:"Y-m-d" }}
+                    {% else %}
+                        N/A
+                    {% endif %}
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>

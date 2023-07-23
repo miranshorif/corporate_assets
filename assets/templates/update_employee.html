@@ -1,0 +1,17 @@
+<!-- update_employee.html -->
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Update Employee</title>
+</head>
+<body>
+    <h1>Update Employee</h1>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <input type="submit" value="Save">
+    </form>
+    <a href="{% url 'company_dashboard' company_id=company.id %}">Cancel</a>
+</body>
+</html>

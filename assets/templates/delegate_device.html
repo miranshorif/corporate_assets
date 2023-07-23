@@ -1,0 +1,19 @@
+<!-- delegate_device.html -->
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Delegate Device</title>
+</head>
+<body>
+    <h1>Delegate Device</h1>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <label for="{{ form.condition_on_check_out.id_for_label }}">Condition on Check-Out:</label>
+        <input type="text" id="{{ form.condition_on_check_out.id_for_label }}" name="{{ form.condition_on_check_out.html_name }}">
+        <input type="submit" value="Save">
+    </form>
+    <a href="{% url 'company_dashboard' company_id=company.id %}">Cancel</a>
+</body>
+</html>

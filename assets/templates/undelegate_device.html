@@ -1,0 +1,17 @@
+<!-- undelegate_device.html -->
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Undelegate Device</title>
+</head>
+<body>
+    <h1>Undelegate Device</h1>
+    <p>Are you sure you want to undelegate the device?</p>
+    <form method="post">
+        {% csrf_token %}
+        <input type="submit" value="Undelegate">
+    </form>
+    <a href="{% url 'company_dashboard' company_id=company.id %}">Cancel</a>
+</body>
+</html>

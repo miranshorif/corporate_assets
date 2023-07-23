@@ -1,0 +1,50 @@
+<!-- device_history.html -->
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Device Check-Out and Return History</title>
+</head>
+<body>
+    <h1>Device Check-Out and Return History - {{ device.asset_type }} - {{ device.serial_number }}</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Assigned To</th>
+                <th>Start Date</th>
+                <th>End Date</th>
+                <th>Check-Out Date</th>
+                <th>Return Date</th>
+                <th>Condition on Check-Out</th>
+                <th>Condition on Return</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for transaction in history %}
+            <tr>
+                <td>{{ transaction.assigned_to.name }}</td>
+                <td>{{ transaction.start_date }}</td>
+                <td>{{ transaction.end_date }}</td>
+                <td>{{ transaction.check_out_date }}</td>
+                <td>
+                    {% if transaction.return_date %}
+                        {{ transaction.return_date }}
+                    {% else %}
+                        Not returned yet
+                    {% endif %}
+                </td>
+                <td>{{ transaction.condition_on_check_out }}</td>
+                <td>
+                    {% if transaction.condition_on_return %}
+                        {{ transaction.condition_on_return }}
+                    {% else %}
+                        N/A
+                    {% endif %}
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <a href="{% url 'company_dashboard' company_id=device.company.id %}">Back to Dashboard</a>
+</body>
+</html>

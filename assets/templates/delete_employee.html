@@ -1,0 +1,17 @@
+<!-- delete_employee.html -->
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Delete Employee</title>
+</head>
+<body>
+    <h1>Delete Employee</h1>
+    <p>Are you sure you want to delete {{ employee.name }}?</p>
+    <form method="post">
+        {% csrf_token %}
+        <input type="submit" value="Delete">
+    </form>
+    <a href="{% url 'company_dashboard' company_id=company.id %}">Cancel</a>
+</body>
+</html>
